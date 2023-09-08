@@ -3,6 +3,21 @@ document.getElementById("Dora02").value=0;
 document.getElementById("Dora03").value=0;
 document.getElementById("Dora04").value=0;
 
+document.getElementById("mingke01").value=0;
+document.getElementById("anke01").value=0;
+document.getElementById("minggang01").value=0;
+document.getElementById("angang01").value=0;
+document.getElementById("mingke02").value=0;
+document.getElementById("anke02").value=0;
+document.getElementById("minggang02").value=0;
+document.getElementById("angang02").value=0;
+
+document.getElementById("zifengchangfeng").value=0;
+document.getElementById("sanyuan").value=0;
+
+document.getElementById("benchang").value=0;
+document.getElementById("riichipoint").value=0;
+
 //初始获取番数-非役满
 {
 //1番
@@ -97,6 +112,55 @@ checkbox.addEventListener("change", function() {
 });});
 }
 //获取符数
+{
+var fu001 = 20;
+var checkboxzimofu = document.getElementById("zimo");
+checkboxzimofu.addEventListener("change", function() {
+    if (checkboxzimofu.checked)
+        fu001+=2;
+    else
+        fu001-=2;
+});
+
+var checkboxmenqianqingdianhe = document.getElementById("menqianqingdianhe");
+checkboxmenqianqingdianhe.addEventListener("change", function() {
+    if (checkboxmenqianqingdianhe.checked)
+        fu001+=10;
+    else
+        fu001-=10;
+});
+var tingpai2fu = 0;
+var checkboxes2fu = document.querySelectorAll(".checkbox-label-2fu");
+checkboxes2fu.forEach(function(checkbox) {
+checkbox.addEventListener("change", function() {
+      if (checkbox.checked) {
+        tingpai2fu+=2;
+      } else {
+        tingpai2fu-=2;
+      }
+});});
+}
+//点数计算
+{
+    var zhuangjia = 0;
+    var zijia = 0;
+    var checkboxzhuangjia = document.getElementById("zhuangjia");
+    checkboxzhuangjia.addEventListener("change", function() {
+    if (checkboxzhuangjia.checked)
+        zhuangjia = 1;
+    else
+        zhuangjia = 0;
+    });
+    var checkboxzijia = document.getElementById("zijia");
+    checkboxzijia.addEventListener("change", function() {
+    if (checkboxzijia.checked)
+        zijia = 1;
+    else
+        zijia = 0;
+    });
+}
+
+
 
 function recordInput()
 {
@@ -107,22 +171,141 @@ function recordInput()
     fan=dora+parseInt(value1fan)+parseInt(value2fan)+parseInt(valuefulu)+parseInt(value3fan)+parseInt(valueqingyise)+parseInt(valuemanguan);
     document.getElementById("fan").textContent = parseInt(fan);
 
-    var fu = 20;
-    fu;
+    
+    var fu002 = parseInt(document.getElementById("mingke01").value)*2+parseInt(document.getElementById("mingke02").value)*4+parseInt(document.getElementById("anke01").value)*4+parseInt(document.getElementById("anke02").value)*8+parseInt(document.getElementById("minggang01").value)*8+parseInt(document.getElementById("minggang02").value)*16+parseInt(document.getElementById("angang01").value)*16+parseInt(document.getElementById("angang02").value)*32;
+    var fu003 = parseInt(document.getElementById("zifengchangfeng").value)*2+parseInt(document.getElementById("sanyuan").value)*2;
+    var fu = fu001+fu002+fu003+tingpai2fu;
+    if(fu%10!=0)
+        fu=fu-fu%10+10;//符数向上取整
+
     document.getElementById("fu").textContent = parseInt(fu);
     
+        var get_a;
+
     if(fan<5)
         document.getElementById("man").textContent = "";
-    else if(fan==5)
+    else if(fan==5){
         document.getElementById("man").textContent = "满贯";
-    else if(fan>=6&&fan<=7)
+    get_a = 2000;}
+    else if(fan>=6&&fan<=7){
         document.getElementById("man").textContent = "跳满";
-    else if(fan>=8&&fan<=10)
+    get_a=3000;}
+    else if(fan>=8&&fan<=10){
         document.getElementById("man").textContent = "倍满";
-    else if(fan>=11&&fan<=12)
+    get_a=4000;}
+    else if(fan>=11&&fan<=12){
         document.getElementById("man").textContent = "三倍满";
-    else if(fan>=13)
+    get_a=6000;}
+    else if(fan>=13){
         document.getElementById("man").textContent = "累计役满";
+    get_a=8000;}
+        
+        var selectElementwayofwin = document.getElementById("wayofwin");
+        var selectedValuewayofwin = selectElementwayofwin.value;
+        var resultValuewayofwin;
+        
+        if (selectedValuewayofwin === "zimo") {
+            resultValuewayofwin = -1;
+        } else if (selectedValuewayofwin === "dianhe") {
+            resultValuewayofwin = 1;
+        }
+    
+        var selectElementhumannum = document.getElementById("humannum");
+        var selectedValuehumannum = selectElementhumannum.value;
+        var resultValuehumannum;
+        
+        if (selectedValuehumannum === "four") {
+            resultValuehumannum = 4;
+        } else if (selectedValuehumannum === "three") {
+            resultValuehumannum = 3;
+        }
+
+        var benchang=parseInt(document.getElementById("benchang").value)*100;
+        var riichipoint=parseInt(document.getElementById("riichipoint").value)*1000;
+
+        if(fan<5)
+            get_a=fu*(Math.pow(2,2+fan));
+
+        if((fan==3&&fu>=70)||(fan==4&&fu>=40))
+        {
+            get_a=2000;
+            document.getElementById("man").textContent = "满贯";
+        }
+
+        if(resultValuehumannum==4)
+            {
+                if(zhuangjia==1&&zijia==0)
+                {
+                    if(resultValuewayofwin==-1)
+                    {
+                        document.getElementById("get").textContent =  3*Math.ceil((2*parseInt(get_a))/100)*100+riichipoint+benchang*3;
+                        document.getElementById("pay01").innerHTML = "&emsp;";
+                        document.getElementById("pay02").textContent = Math.ceil((2*parseInt(get_a))/100)*100+benchang;
+                        document.getElementById("pay03").innerHTML = "&emsp;";
+                    }
+                    else if(resultValuewayofwin==1)
+                    {
+                        document.getElementById("get").textContent =  Math.ceil((6*parseInt(get_a))/100)*100+riichipoint+benchang*3;
+                        document.getElementById("pay01").innerHTML = "&emsp;";
+                        document.getElementById("pay02").innerHTML = "&emsp;";
+                        document.getElementById("pay03").textContent =  Math.ceil((6*parseInt(get_a))/100)*100+benchang*3;
+                    }
+                }
+                else if(zhuangjia==0&&zijia==1)
+                {
+                    if(resultValuewayofwin==-1)
+                    {
+                        document.getElementById("get").textContent =  Math.ceil((2*parseInt(get_a))/100)*100+ 2*Math.ceil((parseInt(get_a))/100)*100+riichipoint+benchang*3;
+                        document.getElementById("pay01").textContent =  Math.ceil((2*parseInt(get_a))/100)*100+benchang;
+                        document.getElementById("pay02").textContent =  Math.ceil((parseInt(get_a))/100)*100+benchang;
+                        document.getElementById("pay03").innerHTML = "&emsp;";
+                    }
+                    else if(resultValuewayofwin==1)
+                    {
+                        document.getElementById("get").textContent =  Math.ceil((4*parseInt(get_a))/100)*100+riichipoint+benchang*3;
+                        document.getElementById("pay01").innerHTML = "&emsp;";
+                        document.getElementById("pay02").innerHTML = "&emsp;";
+                        document.getElementById("pay03").textContent =  Math.ceil((4*parseInt(get_a))/100)*100+benchang*3;
+                    }
+                }
+            }
+            else if(resultValuehumannum==3)
+            {
+                if(zhuangjia==1&&zijia==0)
+                {
+                    if(resultValuewayofwin==-1)
+                    {
+                        document.getElementById("get").textContent = 2* Math.ceil((2*parseInt(get_a))/100)*100+riichipoint+benchang*2;
+                        document.getElementById("pay01").innerHTML = "&emsp;";
+                        document.getElementById("pay02").textContent =  Math.ceil((2*parseInt(get_a))/100)*100+benchang;
+                        document.getElementById("pay03").innerHTML = "&emsp;";
+                    }
+                    else if(resultValuewayofwin==1)
+                    {
+                        document.getElementById("get").textContent =  Math.ceil((6*parseInt(get_a))/100)*100+riichipoint+benchang*2;
+                        document.getElementById("pay01").innerHTML = "&emsp;";
+                        document.getElementById("pay02").innerHTML = "&emsp;";
+                        document.getElementById("pay03").textContent =  Math.ceil((6*parseInt(get_a))/100)*100+benchang*2;
+                    }
+                }
+                else if(zhuangjia==0&&zijia==1)
+                {
+                    if(resultValuewayofwin==-1)
+                    {
+                        document.getElementById("get").textContent =  Math.ceil((2*parseInt(get_a))/100)*100+ Math.ceil((parseInt(get_a))/100)*100+riichipoint+benchang*2;
+                        document.getElementById("pay01").textContent =  Math.ceil((2*parseInt(get_a))/100)*100+benchang;
+                        document.getElementById("pay02").textContent =  Math.ceil((parseInt(get_a))/100)*100+benchang;
+                        document.getElementById("pay03").innerHTML = "&emsp;";
+                    }
+                    else if(resultValuewayofwin==1)
+                    {
+                        document.getElementById("get").textContent =  Math.ceil((4*parseInt(get_a))/100)*100+riichipoint+benchang*2;
+                        document.getElementById("pay01").innerHTML = "&emsp;";
+                        document.getElementById("pay02").innerHTML = "&emsp;";
+                        document.getElementById("pay03").textContent =  Math.ceil((4*parseInt(get_a))/100)*100+benchang*2;
+                    }
+                }
+            }
     }
     else
     {
