@@ -292,7 +292,7 @@
 				<p>数牌（0符）</p>
 				<p>客风牌（0符）</p>
 				<div class="input-container"><label for="zifengchangfeng">自风牌/场风牌（2符）&emsp;<input type="number" id="zifengchangfeng"></label></div>
-				<div class="input-container"><label for="sanyuan">三元牌（2符）&emsp;<input type="number" id="sanyuan"></label></div>
+				<div class="input-container"><label for="sanyuan">三元牌（2符）&emsp;&emsp;&emsp; &emsp;<input type="number" id="sanyuan"></label></div>
 
 			<h3>听牌型</h3>
 
@@ -331,10 +331,18 @@
 
 
 		<h2>其它可选规则</h2>
+			<label>&emsp;&ensp; 三人麻将点数计算方式&emsp;
+			<select id="sanma" name="sanma">
+				<option value="zimosun">自摸损</option>
+				<option value="beijiazheban">北家折半</option>
+				<option value="pingfen">平分</option>
+			</select></label>
+			&emsp;
 			<label>
 				<input type="checkbox" id="liujumanguan" class="checkbox-label">
 				<span class="checkbox-label">流局满贯</span>
 			</label>
+			&emsp;
 			<label>
 				<input type="checkbox" id="renhe" class="checkbox-label">
 				<span class="checkbox-label">人和</span>
@@ -348,7 +356,7 @@
 				<input type="checkbox" id="qieshangmanguan" class="checkbox-label">
 				<span class="checkbox-label">切上满贯</span>
 			</label>
-
+			&emsp;
 			<label>
 				<input type="checkbox" id="qingtianjing" class="checkbox-label">
 				<span class="checkbox-label">青天井</span>
