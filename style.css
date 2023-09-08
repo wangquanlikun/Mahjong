@@ -38,3 +38,28 @@ label {
 .input-container {
     margin-bottom: 20px; /* 设置底部间距为20像素，可以根据需要进行调整 */
 }
+
+#mingke01 {
+    width: 50px; 
+}
+#mingke02 {
+    width: 50px; 
+}
+#anke01 {
+    width: 50px; 
+}
+#anke02 {
+    width: 50px; 
+}
+#minggang01 {
+    width: 50px; 
+}
+#minggang02 {
+    width: 50px; 
+}
+#angang01 {
+    width: 50px; 
+}
+#angang02 {
+    width: 50px; 
+}
