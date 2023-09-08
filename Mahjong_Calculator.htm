@@ -268,29 +268,24 @@
 
 			<h3>面子</h3>
 				<p>顺子（0符）</p>
-				<div class="input-container"><label for="mingke">明刻&emsp;<input type="number" id="mingke">
-					<select id="mingke01" name="mingke01">
-						<option value="zhongzhang">中张（2符）</option>
-						<option value="yaojiu">幺九（4符）</option>
-					</select>
+				<div class="input-container"><label>明刻&emsp;中张（2符）&nbsp;&nbsp;<input type="number" id="mingke01">
+				&emsp;&emsp;
+				幺九（4符）&nbsp;&nbsp;<input type="number" id="mingke02">
 				</label></div>
-				<div class="input-container"><label for="anke">暗刻&emsp;<input type="number" id="anke">
-					<select id="anke01" name="anke01">
-						<option value="zhongzhang">中张（4符）</option>
-						<option value="yaojiu">幺九（8符）</option>
-					</select>
+
+				<div class="input-container"><label>暗刻&emsp;中张（4符）&nbsp;&nbsp;<input type="number" id="anke01">
+				&emsp;&emsp;
+				幺九（8符）&nbsp;&nbsp;<input type="number" id="anke02">
 				</label></div>
-				<div class="input-container"><label for="minggang">明杠&emsp;<input type="number" id="minggang">
-					<select id="minggang01" name="minggang01">
-						<option value="zhongzhang">中张（8符）</option>
-						<option value="yaojiu">幺九（16符）</option>
-					</select>
+
+				<div class="input-container"><label>明杠&emsp;中张（8符）&nbsp;&nbsp;<input type="number" id="minggang01">
+				&emsp;&emsp;
+				幺九（16符）<input type="number" id="minggang02">
 				</label></div>
-				<div class="input-container"><label for="angang">暗杠&emsp;<input type="number" id="angang">
-					<select id="angang01" name="angang01">
-						<option value="zhongzhang">中张（16符）</option>
-						<option value="yaojiu">幺九（32符）</option>
-					</select>
+	
+				<div class="input-container"><label>暗杠&emsp;中张（16符）<input type="number" id="angang01">
+				&emsp;&emsp;
+				幺九（32符）<input type="number" id="angang02">
 				</label></div>
 
 			<h3>雀头</h3>
@@ -302,14 +297,14 @@
 			<h3>听牌型</h3>
 
 			<label>
-				<input type="checkbox" id="danqi" class="checkbox-label">
-				<span class="checkbox-label">单骑（2符）</span>
+				<input type="checkbox" id="danqi" class="checkbox-label-2fu">
+				<span class="checkbox-label-2fu">单骑（2符）</span>
 				<pre>&#09;</pre>
-				<input type="checkbox" id="bianzhang" class="checkbox-label">
-				<span class="checkbox-label">边张（2符）</span>
+				<input type="checkbox" id="bianzhang" class="checkbox-label-2fu">
+				<span class="checkbox-label-2fu">边张（2符）</span>
 				<pre>&#09;</pre>
-				<input type="checkbox" id="kanzhang" class="checkbox-label">
-				<span class="checkbox-label">坎张（2符）</span>
+				<input type="checkbox" id="kanzhang" class="checkbox-label-2fu">
+				<span class="checkbox-label-2fu">坎张（2符）</span>
 			</label>
 			<label>
 				<input type="checkbox" id="liangmian" class="checkbox-label">
@@ -378,7 +373,8 @@
 			</select>
 		</label>
 		&emsp;
-		<div class="input-container"><label for="benchang">本场 &emsp;<input type="number" id="benchang">&emsp;&emsp;&emsp;&emsp;<button onclick="recordInput()">计算</button></label></div>
+		<div class="input-container"><label for="riichipoint">立直棒 &emsp;<input type="number" id="riichipoint"></label></div>
+		<div class="input-container"><label for="benchang">本场 &emsp;&emsp;<input type="number" id="benchang">&emsp;&emsp;&emsp;&emsp;<button onclick="recordInput()">计算</button></label></div>
 		&emsp;
 		<p>你获得了 <b><span id="fan">&emsp;</span></b> 番  <b><span id="fu">&emsp;</span></b> 符 &emsp; <b><span id="man"></span></b></p>
 		<p>你的得点是：<b><span id="get"></span></b></p>
