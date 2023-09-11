@@ -191,6 +191,17 @@ checkbox.addEventListener("change", function() {
       guoshiwushuang = 0;
     }
 });
+
+//人和
+var renhe = 0;
+var checkboxrenhe = document.getElementById("renhe");
+checkboxrenhe.addEventListener("change", function() {
+if (checkboxrenhe.checked) {
+    renhe = 1;
+} else {
+    renhe = 0;
+}
+});
 }
 //点数计算
 {
@@ -216,15 +227,38 @@ checkbox.addEventListener("change", function() {
 
 function recordInput()
 {
-    if(valueyiman==0&&valuedoubleyiman==0)
+    var value5fan = 0;
+    var valueyimanrenhe = 0;
+    if(renhe==1)
+    {
+        var selectElementrenhe = document.getElementById("renhe01");
+        var selectedValuerenhe = selectElementrenhe.value;
+        var resultValuerenhe;
+        
+        
+        if (selectedValuerenhe === "yiman") {
+            resultValuerenhe = 1;
+            value5fan=0;
+            valueyimanrenhe = 1;
+
+        } else if (selectedValuerenhe === "manguan") {
+            resultValuerenhe = -1;
+            value5fan=5;
+            valueyimanrenhe = 0;
+        }
+    }
+
+    if(valueyiman==0&&valuedoubleyiman==0&&(renhe==0||(renhe==1&&resultValuerenhe==-1)))
     {
     var dora = parseInt(document.getElementById("Dora01").value)+parseInt(document.getElementById("Dora02").value)+parseInt(document.getElementById("Dora03").value)+parseInt(document.getElementById("Dora04").value);
     var fan = 0;
-    fan=dora+parseInt(value1fan)+parseInt(value2fan)+parseInt(valuefulu)+parseInt(value3fan)+parseInt(valueqingyise)+parseInt(valuemanguan);
+    fan=dora+parseInt(value1fan)+parseInt(value2fan)+parseInt(valuefulu)+parseInt(value3fan)+parseInt(valueqingyise)+parseInt(valuemanguan)+parseInt(value5fan);
     if(liujumanguan==1)
     {
         fan=5;
         document.getElementById("man").textContent = "流局满贯";
+        document.getElementById("fan").innerHTML = "&emsp;";
+        document.getElementById("fu").innerHTML = "&emsp;";
         get_a = 2000;
     }
     else
@@ -376,7 +410,7 @@ function recordInput()
     }
     else
     {
-        var yiman=parseInt(valueyiman)+parseInt(valuedoubleyiman);
+        var yiman=parseInt(valueyiman)+parseInt(valuedoubleyiman)+parseInt(valueyimanrenhe);
         document.getElementById("fan").innerHTML = "&emsp;";
         document.getElementById("fu").innerHTML = "&emsp;";
         var get_a;
